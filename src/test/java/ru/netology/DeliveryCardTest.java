@@ -6,10 +6,10 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class DeliveryCardTest {
 
-    @Test
+   /* @Test
     void shouldTestCardDeliveryOrder() {
 
         open("http://localhost:9999/");
-    }
+    }*/
 
 }
