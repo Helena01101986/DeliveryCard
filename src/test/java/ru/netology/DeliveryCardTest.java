@@ -10,8 +10,6 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 public class DeliveryCardTest {
 
-
-
     @Test
     void shouldTestCardDeliveryOrder() {
 
@@ -27,15 +25,6 @@ public class DeliveryCardTest {
         $("[data-test-id=agreement]").click();
         $x("//span[contains(text(), 'Забронировать')]").click();
         $("[data-test-id='notification']").shouldBe(visible, Duration.ofSeconds(12));
-
-
-
-
-
-
-
-
-
     }
 
 }
