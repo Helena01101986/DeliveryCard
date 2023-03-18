@@ -10,10 +10,13 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+
 public class DeliveryCardTest {
 
     LocalDate today = LocalDate.now();
-    String generateDate = today.plusDays(3).format(DateTimeFormatter.ofPattern("dd,MM.yyyy"));
+    public String generateDate(int days) {
+        return today.plusDays(days).format(DateTimeFormatter.ofPattern("dd,MM.yyyy"));
+    }
 
     @Test
     void shouldTestCardDeliveryOrder() {
@@ -23,7 +26,7 @@ public class DeliveryCardTest {
         $x("//input[@placeholder='Город']").setValue("Новосибирск");
         $("[data-test-id=date] input").click();
         $("[data-test-id=date] input").setValue(Keys.CONTROL + "a" + Keys.DELETE);
-        $("[data-test-id=date] input").setValue("25.03.2023");
+        $("[data-test-id=date] input").setValue(generateDate(7));
         $x("//input[@name='name']").setValue("Иванов Петр");
         $("[data-test-id=phone] input").setValue("+79311234567");
         $("[data-test-id=agreement]").click();
@@ -39,7 +42,7 @@ public class DeliveryCardTest {
         $x("//input[@placeholder='Город']").setValue("Новосибирск");
         $x("//input[@placeholder='Дата встречи']").click();
         $x("//input[@placeholder='Дата встречи']").setValue(Keys.CONTROL + "a" + Keys.DELETE);
-        $x("//input[@placeholder='Дата встречи']").setValue(generateDate);
+        $x("//input[@placeholder='Дата встречи']").setValue(generateDate(3));
         $x("//input[@name='name']").setValue("Иванов Петр");
         $("[data-test-id=phone] input").setValue("+79311234567");
         $("[data-test-id=agreement]").click();
